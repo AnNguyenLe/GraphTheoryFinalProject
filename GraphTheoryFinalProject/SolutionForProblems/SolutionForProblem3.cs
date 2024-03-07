@@ -9,6 +9,8 @@ public class SolutionForProblem3
     public static void Run(string filePath)
     {
         // ============== Yeu cau 3: ===============
+        Console.WriteLine("\nYêu cầu 3: Tìm cây khung lớn nhất sử dụng giải thuật Prim và Kruskal\n");
+
         var adjList = new AdjacencyList(filePath);
 
         IPrimSpanningTree primMaxSpanningTree = new PrimSpanningTree(adjList, TypesOfSpanningTree.MAXIMUM);
