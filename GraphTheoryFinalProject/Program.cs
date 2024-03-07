@@ -1,6 +1,5 @@
 ﻿using GraphTheoryFinalProject.Entities;
-using GraphTheoryFinalProject.Enums;
-using GraphTheoryFinalProject.SpanningTreeAlgos;
+using GraphTheoryFinalProject.SolutionForProblems;
 
 namespace GraphTheoryFinalProject;
 
@@ -10,13 +9,13 @@ class Program
     {
         // ============== Yeu cau 3: ===============
         const string FILEPATH_3 = "/Users/thienannguyenle/Downloads/GraphTheoryFinalProject_Samples/connected_undirected_graph_3.txt";
-        var adjList = new AdjacencyList(FILEPATH_3);
+        SolutionForProblem3.Run(FILEPATH_3);
 
-        IPrimSpanningTree primMaxSpanningTree = new PrimSpanningTree(adjList, TypesOfSpanningTree.MAXIMUM);
-        primMaxSpanningTree.Display(SpanningTreeAlgorithms.PRIM, primMaxSpanningTree.Generate(0));
 
-        IKruskalSpanningTree kruskalMaxSpanningTree = new KruskalSpanningTree(adjList, TypesOfSpanningTree.MAXIMUM);
-        kruskalMaxSpanningTree.Display(SpanningTreeAlgorithms.KRUSKAL, kruskalMaxSpanningTree.Generate());
+        // ============== Yeu cau 4: ===============
+        const string FILEPATH_4 = "/Users/thienannguyenle/Downloads/GraphTheoryFinalProject_Samples/problem_4_graph.txt";
+        SolutionForProblem4.Run(FILEPATH_4);
+
         Console.Read();
     }
 }

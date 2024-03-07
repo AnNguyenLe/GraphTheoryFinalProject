@@ -13,6 +13,8 @@
     <None Remove="Comparers\" />
     <None Remove="GraphActions\" />
     <None Remove="SpanningTreeAlgos\" />
+    <None Remove="ShortesPathAlgos\" />
+    <None Remove="SolutionForProblems\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\" />
@@ -20,5 +22,7 @@
     <Folder Include="Comparers\" />
     <Folder Include="GraphActions\" />
     <Folder Include="SpanningTreeAlgos\" />
+    <Folder Include="ShortesPathAlgos\" />
+    <Folder Include="SolutionForProblems\" />
   </ItemGroup>
 </Project>

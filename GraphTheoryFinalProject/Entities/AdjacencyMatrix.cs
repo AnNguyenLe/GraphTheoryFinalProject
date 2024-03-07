@@ -46,7 +46,7 @@ public class AdjacencyMatrix : IAdjacencyMatrix
             Console.WriteLine("The file could not be read:");
             Console.WriteLine(e.Message);
         }
-        return graph;
+        return graph!;
     }
 
     private static List<AdjacentEdge> ConvertToListOfAdjacentEdge(string dataInText)
@@ -77,10 +77,8 @@ public class AdjacencyMatrix : IAdjacencyMatrix
             for (int i = 0; i < noOfAdjEdges; i++)
             {
                 var adjEdge = adjList.Vertices[vertex][i];
-                if (adjMatrix[vertex, adjEdge.Vertex] == 0 && adjMatrix[vertex, adjEdge.Vertex] == adjMatrix[adjEdge.Vertex, vertex])
-                {
-                    adjMatrix[vertex, adjEdge.Vertex] = adjMatrix[adjEdge.Vertex, vertex] = adjEdge.Weight;
-                }
+
+                adjMatrix[vertex, adjEdge.Vertex] = adjMatrix[adjEdge.Vertex, vertex] = adjEdge.Weight;
             }
         }
 
