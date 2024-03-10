@@ -15,6 +15,7 @@
     <None Remove="SpanningTreeAlgos\" />
     <None Remove="ShortesPathAlgos\" />
     <None Remove="SolutionForProblems\" />
+    <None Remove="EulerPathAlgos\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\" />
@@ -24,5 +25,6 @@
     <Folder Include="SpanningTreeAlgos\" />
     <Folder Include="ShortesPathAlgos\" />
     <Folder Include="SolutionForProblems\" />
+    <Folder Include="EulerPathAlgos\" />
   </ItemGroup>
 </Project>

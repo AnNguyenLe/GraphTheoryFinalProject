@@ -49,7 +49,7 @@ public class FloydWarshall
     {
         for (int i = 0; i < _adjMatrix.NoOfVertices; i++)
         {
-            Console.WriteLine($"\nNhững đường đi xuất phát từ đỉnh {i}:");
+            Console.WriteLine($"\nShortest paths from vertex {i}");
             for (int j = 0; j < _adjMatrix.NoOfVertices; j++)
             {
                 if (i == j) continue;

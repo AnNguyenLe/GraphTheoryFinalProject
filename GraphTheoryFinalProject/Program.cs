@@ -8,14 +8,23 @@ class Program
     {
         // Cac file do thi nam trong folder: GraphTheoryFinalProject/GraphTheoryFinalProject/bin/Debug/net7.0/SampleGraphs/
 
-        // ============== Yeu cau 3: ===============
+        Console.WriteLine("\n============== Yeu cau 3: ===============\n");
         var FILEPATH_3 = GetFilePath("SampleGraphs/problem_3_sample_graph.txt");
         SolutionForProblem3.Run(FILEPATH_3);
 
-
-        // ============== Yeu cau 4: ===============
+        Console.WriteLine("\n============== Yeu cau 4: ===============\n");
         var FILEPATH_4 = GetFilePath("SampleGraphs/problem_4_sample_graph.txt");
         SolutionForProblem4.Run(FILEPATH_4);
+
+        Console.WriteLine("\n============== Yeu cau 5: ===============\n");
+        var FILEPATH_5A = GetFilePath("SampleGraphs/problem_5a_euler_circuit_sample_graph.txt");
+        SolutionForProblem5.Run(FILEPATH_5A);
+
+        var FILEPATH_5B = GetFilePath("SampleGraphs/problem_5b_none_euler_path_sample_graph.txt");
+        SolutionForProblem5.Run(FILEPATH_5B);
+
+        var FILEPATH_5C = GetFilePath("SampleGraphs/problem_5c_euler_path_sample_graph.txt");
+        SolutionForProblem5.Run(FILEPATH_5C);
 
         Console.Read();
     }

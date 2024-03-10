@@ -14,13 +14,13 @@ public class SpanningTree : ISpanningTree
     {
         if (spanningTree[0].StartVertex == -1)
         {
-            Console.WriteLine("Đồ thị này không liên thông => Không có cây khung.");
+            Console.WriteLine("This is NOT a connected graph. Finding maximum spanning tree program stopped.\n");
             return;
         }
 
-        Console.WriteLine($"\nGiải thuật {algoType}");
+        Console.WriteLine($"\n{algoType} Algorithm");
 
-        Console.WriteLine("\nTập cạnh của cây khung");
+        Console.WriteLine("\nEdge set of the spanning tree");
 
         decimal totalWeight = 0;
 
@@ -30,7 +30,7 @@ public class SpanningTree : ISpanningTree
             Console.WriteLine($"{edge.StartVertex} - {edge.EndVertex}: {edge.Weight}");
         }
 
-        Console.WriteLine($"\nTrọng số của cây khung: {totalWeight}\n");
+        Console.WriteLine($"\nTotal weight of the spanning tree: {totalWeight}\n");
     }
 }
 

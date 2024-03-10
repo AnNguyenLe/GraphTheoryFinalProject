@@ -8,12 +8,12 @@ public class SolutionForProblem4
 {
     public static void Run(string filePath)
     {
-        Console.WriteLine("\nYêu cầu 4: Tìm đường đi ngắn nhất sử dụng giải thuật Floyd-Warshall:\n");
+        Console.WriteLine("\nProblem 4: Find the shortest path using Floyd-Warshall algorithm\n");
         var adjList = new AdjacencyList(filePath);
         IGraphChecker graphChecker = new GraphChecker(adjList);
         if (!graphChecker.IsPositiveWeightedGraph())
         {
-            Console.WriteLine("Đồ thị không phải là Đồ thị có trọng số dương!");
+            Console.WriteLine("This is NOT positive weighted graph!");
             return;
         }
 

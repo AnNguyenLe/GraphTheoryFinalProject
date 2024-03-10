@@ -11,5 +11,12 @@ public class Edge
         EndVertex = endVertex;
         Weight = weight;
     }
+
+    public override int GetHashCode()
+    {
+        return HashCode.Combine(StartVertex + EndVertex);
+    }
 }
+
+
 

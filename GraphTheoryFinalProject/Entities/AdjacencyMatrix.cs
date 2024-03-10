@@ -20,7 +20,7 @@ public class AdjacencyMatrix : IAdjacencyMatrix
     public AdjacencyMatrix(AdjacencyList adjacencyList)
     {
         NoOfVertices = adjacencyList.NoOfVertices;
-        Data = ConvertToAdjacencyMatrix(adjacencyList);
+        Data = ConvertToUndirectedGraphAdjacencyMatrix(adjacencyList);
     }
 
     public decimal[,] ConvertTextToAdjacencyMatrix(string filePath)
@@ -49,6 +49,21 @@ public class AdjacencyMatrix : IAdjacencyMatrix
         return graph!;
     }
 
+    //public List<Edge> GetEdgesFromUndirectedGraph()
+    //{
+    //    var edgeSet = new List<Edge>();
+
+    //    for (int i = 0; i < Data.GetLength(0); i++)
+    //    {
+    //        for (int j = i + 1; j < Data.GetLength(1); j++)
+    //        {
+    //            edgeSet.Add(new Edge(i, j, Data[i, j]));
+    //        }
+    //    }
+
+    //    return edgeSet;
+    //}
+
     private static List<AdjacentEdge> ConvertToListOfAdjacentEdge(string dataInText)
     {
         string[] adjInfo = dataInText.Split(" ", StringSplitOptions.RemoveEmptyEntries);
@@ -67,7 +82,7 @@ public class AdjacencyMatrix : IAdjacencyMatrix
         return list;
     }
 
-    private static decimal[,] ConvertToAdjacencyMatrix(AdjacencyList adjList)
+    private static decimal[,] ConvertToUndirectedGraphAdjacencyMatrix(AdjacencyList adjList)
     {
         var adjMatrix = new decimal[adjList.NoOfVertices, adjList.NoOfVertices];
 
@@ -84,5 +99,7 @@ public class AdjacencyMatrix : IAdjacencyMatrix
 
         return adjMatrix;
     }
+
+
 }
 

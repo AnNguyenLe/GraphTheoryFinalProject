@@ -29,6 +29,12 @@ public class AdjacencyList : IAdjacencyList
         Vertices = adjList;
     }
 
+    public AdjacencyList(int noOfVertices, Dictionary<int, List<AdjacentEdge>> adjListData)
+    {
+        NoOfVertices = noOfVertices;
+        Vertices = adjListData;
+    }
+
     public Dictionary<int, List<AdjacentEdge>> ConvertTextToAdjacencyList(string filePath)
     {
         Dictionary<int, List<AdjacentEdge>> graph = new();
@@ -40,7 +46,7 @@ public class AdjacencyList : IAdjacencyList
 
             for (var i = 0; i < noOfVertices; i++)
             {
-                graph[i] = ConvertToListOfAdjacentEdge(sr.ReadLine()); ;
+                graph[i] = ConvertToListOfAdjacentEdge(sr.ReadLine());
             }
         }
         catch (IOException e)
@@ -49,8 +55,25 @@ public class AdjacencyList : IAdjacencyList
             Console.WriteLine(e.Message);
         }
 
-
         return graph;
+    }
+
+    public static AdjacencyList Clone(AdjacencyList adjList)
+    {
+        var clonedAdjListData = new Dictionary<int, List<AdjacentEdge>>();
+
+        foreach (var vertex in adjList.Vertices.Keys)
+        {
+            var clonedAdjEdges = new List<AdjacentEdge>();
+            foreach (var adjEdge in adjList.Vertices[vertex])
+            {
+                var clonedAdjEdge = new AdjacentEdge(adjEdge.Vertex, adjEdge.Weight);
+                clonedAdjEdges.Add(clonedAdjEdge);
+            }
+            clonedAdjListData.Add(vertex, clonedAdjEdges);
+        }
+
+        return new AdjacencyList(adjList.NoOfVertices, clonedAdjListData);
     }
 
     private static List<AdjacentEdge> ConvertToListOfAdjacentEdge(string dataInText)

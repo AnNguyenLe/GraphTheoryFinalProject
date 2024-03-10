@@ -9,7 +9,7 @@ public class SolutionForProblem3
     public static void Run(string filePath)
     {
         // ============== Yeu cau 3: ===============
-        Console.WriteLine("\nYêu cầu 3: Tìm cây khung lớn nhất sử dụng giải thuật Prim và Kruskal\n");
+        Console.WriteLine("\nProblem 3: Find the maximum spanning tree using Prim and Kruskal algorithms\n");
 
         var adjList = new AdjacencyList(filePath);
 
