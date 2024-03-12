@@ -7,6 +7,13 @@ class Program
     static void Main(string[] args)
     {
         // Cac file do thi nam trong folder: GraphTheoryFinalProject/GraphTheoryFinalProject/bin/Debug/net7.0/SampleGraphs/
+        Console.WriteLine("\n============== Yeu cau 1: ===============\n");
+        var FILEPATH_1WINDMILL = GetFilePath("SampleGraphs/problem_1_sample_windmill_graph.txt");
+        SolutionForProblem1.Run(FILEPATH_1WINDMILL);
+
+        var FILEPATH_1BARBELL = GetFilePath("SampleGraphs/problem_1_sample_barbell_graph.txt");
+        SolutionForProblem1.Run(FILEPATH_1BARBELL);
+
 
         Console.WriteLine("\n============== Yeu cau 3: ===============\n");
         var FILEPATH_3 = GetFilePath("SampleGraphs/problem_3_sample_graph.txt");

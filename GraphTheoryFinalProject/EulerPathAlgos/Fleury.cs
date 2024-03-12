@@ -3,68 +3,6 @@ using GraphTheoryFinalProject.GraphActions;
 
 namespace GraphTheoryFinalProject.EulerPathAlgos;
 
-//public class VisitedAdjacentEdge
-//{
-//    public AdjacentEdge AdjEdge { get; init; }
-//    public bool Visited { get; set; }
-
-//    public VisitedAdjacentEdge(AdjacentEdge adjEdge, bool visited)
-//    {
-//        AdjEdge = adjEdge;
-//        Visited = visited;
-//    }
-//}
-
-//public class VisitedAdjacencyList
-//{
-//    public Dictionary<int, List<VisitedAdjacentEdge>> Data;
-
-//    public VisitedAdjacencyList(Dictionary<int, List<AdjacentEdge>> adjListData)
-//    {
-//        Data = AugmentedWithVisitedProperty(adjListData);
-//    }
-
-//    private static Dictionary<int, List<VisitedAdjacentEdge>> AugmentedWithVisitedProperty(Dictionary<int, List<AdjacentEdge>> adjListData)
-//    {
-//        Dictionary<int, List<VisitedAdjacentEdge>> data = new();
-//        foreach (var vertex in adjListData.Keys)
-//        {
-//            var augmentedAdjEdges = new List<VisitedAdjacentEdge>();
-//            foreach (var adjEdge in adjListData[vertex])
-//            {
-//                augmentedAdjEdges.Add(new VisitedAdjacentEdge(adjEdge, false));
-//            }
-//            data.Add(vertex, augmentedAdjEdges);
-//        }
-//        return data;
-//    }
-//}
-
-//public class RestoreInfo
-//{
-//    public int FirstVertex { get; init; }
-//    public int SecondVertex { get; init; }
-//    public AdjacentEdge FirstAdjacentEdge { get; init; }
-//    public AdjacentEdge SecondAdjacentEdge { get; init; }
-//    public int FirstAdjacentEdgeIndex { get; init; }
-//    public int SecondAdjacentEdgeIndex { get; init; }
-
-//    public RestoreInfo(AdjacencyList adjList, Edge edge)
-//    {
-//        FirstVertex = edge.StartVertex;
-//        SecondVertex = edge.EndVertex;
-//        FirstAdjacentEdgeIndex = FindAdjEdgeIndex(adjList, FirstVertex, SecondVertex);
-//        SecondAdjacentEdgeIndex = FindAdjEdgeIndex(adjList, SecondVertex, FirstVertex);
-//        FirstAdjacentEdge = adjList.Vertices[FirstVertex][FirstAdjacentEdgeIndex];
-//        SecondAdjacentEdge = adjList.Vertices[SecondVertex][SecondAdjacentEdgeIndex];
-//    }
-
-//    private static int FindAdjEdgeIndex(AdjacencyList adjList, int startVertex, int endVertex)
-//    {
-//        return adjList.Vertices[startVertex].FindIndex(adjEdge => adjEdge.Vertex == endVertex);
-//    }
-//}
-
 public class Fleury
 {
     private readonly AdjacencyList _adjList;
@@ -92,7 +30,7 @@ public class Fleury
         var graphData = graph.Vertices;
 
         // Based on handshaking theorem:
-        var noOfRemainingEdges = graphData.Values.Aggregate(0, (acc, listOfAdjEdges) => acc + listOfAdjEdges.Count) / 2;
+        var noOfRemainingEdges = graph.CountTotalEdges();
 
         var visitedEdges = new Dictionary<int, bool>();
         var graphWithRemovedEdges = graph;
@@ -115,7 +53,7 @@ public class Fleury
         return path;
     }
 
-    private Edge SelectNextEdge(ref AdjacencyList adjList, Dictionary<int, bool> visitedEdges, int startVertex)
+    private static Edge SelectNextEdge(ref AdjacencyList adjList, Dictionary<int, bool> visitedEdges, int startVertex)
     {
         var adjEdges = adjList.Vertices[startVertex];
         Edge bridge = null;

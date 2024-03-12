@@ -76,6 +76,11 @@ public class AdjacencyList : IAdjacencyList
         return new AdjacencyList(adjList.NoOfVertices, clonedAdjListData);
     }
 
+    public int CountTotalEdges()
+    {
+        return Vertices.Values.Aggregate(0, (acc, listOfAdjEdges) => acc + listOfAdjEdges.Count) / 2;
+    }
+
     private static List<AdjacentEdge> ConvertToListOfAdjacentEdge(string dataInText)
     {
         string[] adjInfo = dataInText.Split(" ", StringSplitOptions.RemoveEmptyEntries);

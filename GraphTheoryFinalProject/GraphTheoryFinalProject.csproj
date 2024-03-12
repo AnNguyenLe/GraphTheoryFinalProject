@@ -16,6 +16,7 @@
     <None Remove="ShortesPathAlgos\" />
     <None Remove="SolutionForProblems\" />
     <None Remove="EulerPathAlgos\" />
+    <None Remove="SpecialGraphs\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\" />
@@ -26,5 +27,6 @@
     <Folder Include="ShortesPathAlgos\" />
     <Folder Include="SolutionForProblems\" />
     <Folder Include="EulerPathAlgos\" />
+    <Folder Include="SpecialGraphs\" />
   </ItemGroup>
 </Project>

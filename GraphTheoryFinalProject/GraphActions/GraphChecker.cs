@@ -7,7 +7,7 @@ public interface IGraphChecker
 {
     bool IsConnectedGraph(int startVertex = 0);
     bool IsPositiveWeightedGraph();
-    //bool IsBridge(Edge edge);
+    bool IsSimpleGraph();
 }
 
 public class GraphChecker : IGraphChecker
@@ -45,16 +45,29 @@ public class GraphChecker : IGraphChecker
         return true;
     }
 
-    //public bool IsBridge(Edge edge)
-    //{
-    //    var clonedAdjListData = _adjList.Vertices.ToDictionary(entry => entry.Key, entry => entry.Value.ToList());
-    //    var adjEdgeStartVertexIndex = _adjList.Vertices[edge.StartVertex].FindIndex(endVertex => endVertex.Vertex == edge.EndVertex);
-    //    var adjEdgeEndVertexIndex = _adjList.Vertices[edge.EndVertex].FindIndex(endVertex => endVertex.Vertex == edge.StartVertex);
+    public bool IsSimpleGraph()
+    {
+        var visitedEdges = new Dictionary<string, bool>();
+        foreach (var vertex in _adjList.Vertices.Keys)
+        {
+            foreach (var adjEdge in _adjList.Vertices[vertex])
+            {
+                // Check self-loop:
+                if (vertex == adjEdge.Vertex)
+                {
+                    return false;
+                }
 
-    //    clonedAdjListData[edge.StartVertex].RemoveAt(adjEdgeStartVertexIndex);
-    //    clonedAdjListData[edge.EndVertex].RemoveAt(adjEdgeEndVertexIndex);
-
-    //    return IsConnectedGraph(new AdjacencyList(_adjList.NoOfVertices, clonedAdjListData));
-    //}
+                // Check multiples:
+                var edgeName = $"{vertex} - {adjEdge.Vertex}";
+                if (visitedEdges.ContainsKey(edgeName))
+                {
+                    return false;
+                }
+                visitedEdges.Add(edgeName, true);
+            }
+        }
+        return true;
+    }
 }
 
