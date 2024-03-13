@@ -17,15 +17,22 @@ public class AdjacencyMatrix : IAdjacencyMatrix
         Data = graph;
     }
 
+    public AdjacencyMatrix(int noOfVertices, decimal[,] data)
+    {
+        NoOfVertices = noOfVertices;
+        Data = data;
+    }
+
     public AdjacencyMatrix(AdjacencyList adjacencyList)
     {
-        NoOfVertices = adjacencyList.NoOfVertices;
-        Data = ConvertToUndirectedGraphAdjacencyMatrix(adjacencyList);
+        AdjacencyMatrix adjMatrix = TranslateFromAdjacencyList(adjacencyList);
+        NoOfVertices = adjMatrix.NoOfVertices;
+        Data = adjMatrix.Data;
     }
 
     public decimal[,] ConvertTextToAdjacencyMatrix(string filePath)
     {
-        decimal[,] graph = null;
+        decimal[,] graph = new decimal[0, 0];
         try
         {
             using var sr = new StreamReader(filePath);
@@ -40,29 +47,15 @@ public class AdjacencyMatrix : IAdjacencyMatrix
                     graph[i, edge.Vertex] = edge.Weight;
                 }
             }
+            return graph;
         }
         catch (IOException e)
         {
-            Console.WriteLine("The file could not be read:");
+            Console.WriteLine("The file could not be read: ");
             Console.WriteLine(e.Message);
         }
-        return graph!;
+        return graph;
     }
-
-    //public List<Edge> GetEdgesFromUndirectedGraph()
-    //{
-    //    var edgeSet = new List<Edge>();
-
-    //    for (int i = 0; i < Data.GetLength(0); i++)
-    //    {
-    //        for (int j = i + 1; j < Data.GetLength(1); j++)
-    //        {
-    //            edgeSet.Add(new Edge(i, j, Data[i, j]));
-    //        }
-    //    }
-
-    //    return edgeSet;
-    //}
 
     private static List<AdjacentEdge> ConvertToListOfAdjacentEdge(string dataInText)
     {
@@ -82,24 +75,23 @@ public class AdjacencyMatrix : IAdjacencyMatrix
         return list;
     }
 
-    private static decimal[,] ConvertToUndirectedGraphAdjacencyMatrix(AdjacencyList adjList)
+    public static AdjacencyMatrix TranslateFromAdjacencyList(AdjacencyList adjList)
     {
-        var adjMatrix = new decimal[adjList.NoOfVertices, adjList.NoOfVertices];
+        var matrix = new decimal[adjList.NoOfVertices, adjList.NoOfVertices];
 
-        foreach (var vertex in adjList.Vertices.Keys)
+        var adjListData = adjList.Vertices;
+
+        foreach (var fromVertex in adjListData.Keys)
         {
-            var noOfAdjEdges = adjList.Vertices[vertex].Count;
-            for (int i = 0; i < noOfAdjEdges; i++)
+            foreach (var adjEdge in adjListData[fromVertex])
             {
-                var adjEdge = adjList.Vertices[vertex][i];
-
-                adjMatrix[vertex, adjEdge.Vertex] = adjMatrix[adjEdge.Vertex, vertex] = adjEdge.Weight;
+                var toVertex = adjEdge.Vertex;
+                var weight = adjEdge.Weight;
+                matrix[fromVertex, toVertex] = weight;
             }
         }
 
-        return adjMatrix;
+        return new AdjacencyMatrix(adjList.NoOfVertices, matrix);
     }
-
-
 }
 

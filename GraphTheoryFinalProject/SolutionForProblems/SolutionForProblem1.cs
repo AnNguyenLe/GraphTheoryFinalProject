@@ -21,7 +21,7 @@ public class SolutionForProblem1
             return;
         }
 
-        if (!graphChecker.IsSimpleGraph())
+        if (graphChecker.AnyLoopsOrMultiples())
         {
             Console.WriteLine("Program stopped. This is NOT a simple graph. Either contains multiples or loops.");
             return;

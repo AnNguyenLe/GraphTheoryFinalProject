@@ -7,7 +7,7 @@ public interface IGraphChecker
 {
     bool IsConnectedGraph(int startVertex = 0);
     bool IsPositiveWeightedGraph();
-    bool IsSimpleGraph();
+    bool AnyLoopsOrMultiples();
 }
 
 public class GraphChecker : IGraphChecker
@@ -45,7 +45,7 @@ public class GraphChecker : IGraphChecker
         return true;
     }
 
-    public bool IsSimpleGraph()
+    public bool AnyLoopsOrMultiples()
     {
         var visitedEdges = new Dictionary<string, bool>();
         foreach (var vertex in _adjList.Vertices.Keys)
@@ -55,19 +55,19 @@ public class GraphChecker : IGraphChecker
                 // Check self-loop:
                 if (vertex == adjEdge.Vertex)
                 {
-                    return false;
+                    return true;
                 }
 
                 // Check multiples:
                 var edgeName = $"{vertex} - {adjEdge.Vertex}";
                 if (visitedEdges.ContainsKey(edgeName))
                 {
-                    return false;
+                    return true;
                 }
                 visitedEdges.Add(edgeName, true);
             }
         }
-        return true;
+        return false;
     }
 }
 

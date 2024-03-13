@@ -120,7 +120,6 @@ public class FloydWarshall
                 else
                 {
                     matrix[i, j] = adjMatrix.Data[i, j];
-
                 }
             }
         }
