@@ -13,6 +13,8 @@ public class SolutionForProblem3
 
         var adjList = new AdjacencyList(filePath);
 
+        var adjMatrix = new AdjacencyMatrix(adjList);
+
         IPrimSpanningTree primMaxSpanningTree = new PrimSpanningTree(adjList, TypesOfSpanningTree.MAXIMUM);
         primMaxSpanningTree.Display(SpanningTreeAlgorithms.PRIM, primMaxSpanningTree.Generate(0));
 

@@ -93,5 +93,23 @@ public class AdjacencyMatrix : IAdjacencyMatrix
 
         return new AdjacencyMatrix(adjList.NoOfVertices, matrix);
     }
+
+    public static AdjacencyMatrix Transpose(AdjacencyMatrix matrix)
+    {
+        var originalMatrix = matrix.Data;
+        var noOfVertices = matrix.NoOfVertices;
+
+        var transposedMatrix = new decimal[noOfVertices, noOfVertices];
+
+        for (int i = 0; i < noOfVertices; i++)
+        {
+            for (int j = 0; j < noOfVertices; j++)
+            {
+                transposedMatrix[j, i] = originalMatrix[i, j];
+            }
+        }
+
+        return new AdjacencyMatrix(noOfVertices, transposedMatrix);
+    }
 }
 

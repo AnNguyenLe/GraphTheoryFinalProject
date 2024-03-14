@@ -1,7 +1,7 @@
 ﻿using GraphTheoryFinalProject.Comparers;
 using GraphTheoryFinalProject.Entities;
 using GraphTheoryFinalProject.Enums;
-using GraphTheoryFinalProject.GraphActions;
+using GraphTheoryFinalProject.Verifiers;
 
 namespace GraphTheoryFinalProject.SpanningTreeAlgos;
 

@@ -1,7 +1,7 @@
 ﻿using GraphTheoryFinalProject.Entities;
-using System.Collections;
+using GraphTheoryFinalProject.GraphTraversal;
 
-namespace GraphTheoryFinalProject.GraphActions;
+namespace GraphTheoryFinalProject.Verifiers;
 
 public interface IGraphChecker
 {
@@ -21,12 +21,9 @@ public class GraphChecker : IGraphChecker
 
     public bool IsConnectedGraph(int startVertex = 0)
     {
-        var visitedVertices = new BitArray(_adjList.NoOfVertices);
-        var orderOfVisitedVertices = new List<int>();
+        var dfsResult = DepthFirstSearch.RunDFS(_adjList, startVertex);
 
-        (new GraphTraversal(_adjList)).DFS(startVertex, visitedVertices, orderOfVisitedVertices);
-
-        return visitedVertices.Cast<bool>().All(value => value == true);
+        return !dfsResult.AnyNonVisitedVertices;
     }
 
     public bool IsPositiveWeightedGraph()
@@ -70,4 +67,6 @@ public class GraphChecker : IGraphChecker
         return false;
     }
 }
+
+
 

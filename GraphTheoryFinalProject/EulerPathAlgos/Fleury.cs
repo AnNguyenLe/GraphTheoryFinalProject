@@ -1,5 +1,5 @@
 ﻿using GraphTheoryFinalProject.Entities;
-using GraphTheoryFinalProject.GraphActions;
+using GraphTheoryFinalProject.Verifiers;
 
 namespace GraphTheoryFinalProject.EulerPathAlgos;
 
@@ -86,8 +86,6 @@ public class Fleury
         return bridge!;
 
     }
-
-
 
     public void Display(List<int> path)
     {

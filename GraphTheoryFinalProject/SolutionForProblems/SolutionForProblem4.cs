@@ -1,5 +1,5 @@
 ﻿using GraphTheoryFinalProject.Entities;
-using GraphTheoryFinalProject.GraphActions;
+using GraphTheoryFinalProject.Verifiers;
 using GraphTheoryFinalProject.ShortesPathAlgos;
 
 namespace GraphTheoryFinalProject.SolutionForProblems;
