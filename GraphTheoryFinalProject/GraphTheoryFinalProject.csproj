@@ -11,22 +11,26 @@
     <None Remove="Entities\" />
     <None Remove="Enums\" />
     <None Remove="Comparers\" />
-    <None Remove="GraphActions\" />
     <None Remove="SpanningTreeAlgos\" />
     <None Remove="ShortesPathAlgos\" />
     <None Remove="SolutionForProblems\" />
     <None Remove="EulerPathAlgos\" />
     <None Remove="SpecialGraphs\" />
+    <None Remove="DirectedGraphs\" />
+    <None Remove="GraphTraversal\" />
+    <None Remove="Verifiers\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\" />
     <Folder Include="Enums\" />
     <Folder Include="Comparers\" />
-    <Folder Include="GraphActions\" />
     <Folder Include="SpanningTreeAlgos\" />
     <Folder Include="ShortesPathAlgos\" />
     <Folder Include="SolutionForProblems\" />
     <Folder Include="EulerPathAlgos\" />
     <Folder Include="SpecialGraphs\" />
+    <Folder Include="DirectedGraphs\" />
+    <Folder Include="GraphTraversal\" />
+    <Folder Include="Verifiers\" />
   </ItemGroup>
 </Project>

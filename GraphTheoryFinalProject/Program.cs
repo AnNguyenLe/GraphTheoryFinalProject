@@ -14,6 +14,18 @@ class Program
         var FILEPATH_1BARBELL = GetFilePath("SampleGraphs/problem_1_sample_barbell_graph.txt");
         SolutionForProblem1.Run(FILEPATH_1BARBELL);
 
+        Console.WriteLine("\n============== Yeu cau 2: ===============\n");
+        var FILEPATH2_STRONGLYCONNECTED = GetFilePath("SampleGraphs/problem_2_strongly_connected_sample_graph.txt");
+        SolutionForProblem2.Run(FILEPATH2_STRONGLYCONNECTED);
+
+        var FILEPATH2_UNILATERALLYLYCONNECTED = GetFilePath("SampleGraphs/problem_2_unilaterally_connected_sample_graph.txt");
+        SolutionForProblem2.Run(FILEPATH2_UNILATERALLYLYCONNECTED);
+
+        var FILEPATH2_WEAKLYCONNECTED = GetFilePath("SampleGraphs/problem_2_weakly_connected_sample_graph.txt");
+        SolutionForProblem2.Run(FILEPATH2_WEAKLYCONNECTED);
+
+        var FILEPATH2_DISCONNECTED = GetFilePath("SampleGraphs/problem_2_disconnected_sample_graph.txt");
+        SolutionForProblem2.Run(FILEPATH2_DISCONNECTED);
 
         Console.WriteLine("\n============== Yeu cau 3: ===============\n");
         var FILEPATH_3 = GetFilePath("SampleGraphs/problem_3_sample_graph.txt");
