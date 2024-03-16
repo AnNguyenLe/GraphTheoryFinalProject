@@ -3,6 +3,7 @@ using GraphTheoryFinalProject.Entities;
 using GraphTheoryFinalProject.Verifiers;
 using GraphTheoryFinalProject.Enums;
 using System.Net.NetworkInformation;
+using GraphTheoryFinalProject.DirectedGraphs.StronglyConnectedComponents;
 
 namespace GraphTheoryFinalProject.SolutionForProblems;
 
@@ -27,7 +28,7 @@ public class SolutionForProblem2
 
         var connectityStatus = (new Connectivity(adjMatrix)).CheckConnectivityStatus();
 
-        var message = connectityStatus switch
+        var graphConnectivityType = connectityStatus switch
         {
             ConnectivityStatus.StronglyConnected => "Strongly Connected Graph.",
             ConnectivityStatus.UnilaterallyConnected => "Unilaterally Connected Graph.",
@@ -36,7 +37,10 @@ public class SolutionForProblem2
             _ => throw new NotImplementedException(),
         };
 
-        Console.WriteLine($"This is {message}");
+        Console.WriteLine($"This is {graphConnectivityType}");
+
+        var tarjanSCCs = new Tarjan(adjList);
+        Tarjan.Display(tarjanSCCs.FindSCCs());
     }
 }
 
