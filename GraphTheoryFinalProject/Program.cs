@@ -4,7 +4,7 @@ namespace GraphTheoryFinalProject;
 
 class Program
 {
-    static void Main(string[] args)
+    static void Main()
     {
         // Cac file do thi nam trong folder: GraphTheoryFinalProject/GraphTheoryFinalProject/bin/Debug/net7.0/SampleGraphs/
         Console.WriteLine("\n============== Yeu cau 1: ===============\n");

@@ -42,11 +42,22 @@ public class AdjacencyList : IAdjacencyList
         try
         {
             using var sr = new StreamReader(filePath);
-            int noOfVertices = int.Parse(sr.ReadLine());
+
+            var CanNoOfVerticesBeParsed = int.TryParse(sr.ReadLine(), out int noOfVertices);
+            if (!CanNoOfVerticesBeParsed)
+            {
+                throw new IOException("Read number of vertices failed!");
+            }
+
 
             for (var i = 0; i < noOfVertices; i++)
             {
-                graph[i] = ConvertToListOfAdjacentEdge(sr.ReadLine());
+                var dataInText = sr.ReadLine();
+                if (string.IsNullOrEmpty(dataInText))
+                {
+                    throw new IOException("Cannot parse null or empty string");
+                }
+                graph[i] = ConvertToListOfAdjacentEdge(dataInText);
             }
         }
         catch (IOException e)

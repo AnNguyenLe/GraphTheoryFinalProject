@@ -1,5 +1,4 @@
-﻿
-using GraphTheoryFinalProject.Entities;
+﻿using GraphTheoryFinalProject.Entities;
 
 namespace GraphTheoryFinalProject.SpecialGraphs;
 

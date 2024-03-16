@@ -36,12 +36,24 @@ public class AdjacencyMatrix : IAdjacencyMatrix
         try
         {
             using var sr = new StreamReader(filePath);
-            int noOfVertices = int.Parse(sr.ReadLine());
+
+            var CanNoOfVerticesBeParsed = int.TryParse(sr.ReadLine(), out int noOfVertices);
+            if (!CanNoOfVerticesBeParsed)
+            {
+                throw new IOException("Read number of vertices failed!");
+            }
+
             graph = new decimal[noOfVertices, noOfVertices];
 
             for (var i = 0; i < noOfVertices; i++)
             {
-                var adjEdges = ConvertToListOfAdjacentEdge(sr.ReadLine());
+                var dataInText = sr.ReadLine();
+                if (string.IsNullOrEmpty(dataInText))
+                {
+                    throw new IOException("Cannot parse null or empty string");
+                }
+
+                var adjEdges = ConvertToListOfAdjacentEdge(dataInText);
                 foreach (var edge in adjEdges)
                 {
                     graph[i, edge.Vertex] = edge.Weight;

@@ -2,7 +2,6 @@
 using GraphTheoryFinalProject.Entities;
 using GraphTheoryFinalProject.Verifiers;
 using GraphTheoryFinalProject.Enums;
-using System.Net.NetworkInformation;
 using GraphTheoryFinalProject.DirectedGraphs.StronglyConnectedComponents;
 
 namespace GraphTheoryFinalProject.SolutionForProblems;
@@ -34,7 +33,7 @@ public class SolutionForProblem2
             ConnectivityStatus.UnilaterallyConnected => "Unilaterally Connected Graph.",
             ConnectivityStatus.WeaklyConnected => "Weakly Connected Graph.",
             ConnectivityStatus.Disconnected => "Disconnected Graph.",
-            _ => throw new NotImplementedException(),
+            _ => "Unidentified Graph",
         };
 
         Console.WriteLine($"This is {graphConnectivityType}");

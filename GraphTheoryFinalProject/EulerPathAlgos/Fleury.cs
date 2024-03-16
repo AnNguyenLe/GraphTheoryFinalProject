@@ -27,8 +27,6 @@ public class Fleury
 
         var graph = AdjacencyList.Clone(_adjList);
 
-        var graphData = graph.Vertices;
-
         // Based on handshaking theorem:
         var noOfRemainingEdges = graph.CountTotalEdges();
 
@@ -60,26 +58,26 @@ public class Fleury
 
         foreach (var adjEdge in adjEdges)
         {
-            var cadidateEdge = new Edge(startVertex, adjEdge.Vertex, adjEdge.Weight);
+            var candidateEdge = new Edge(startVertex, adjEdge.Vertex, adjEdge.Weight);
 
-            var hasBeenVisitedEdge = visitedEdges.ContainsKey(cadidateEdge.GetHashCode());
+            var hasBeenVisitedEdge = visitedEdges.ContainsKey(candidateEdge.GetHashCode());
             if (hasBeenVisitedEdge)
             {
                 continue;
             }
 
-            var graphWithoutCadidateEdge = CreateGraphWithRemovedEdge(adjList, cadidateEdge);
+            var graphWithoutCadidateEdge = CreateGraphWithRemovedEdge(adjList, candidateEdge);
             var isBridge = !(new GraphChecker(graphWithoutCadidateEdge)).IsConnectedGraph();
 
             // Only use bridge whenever it is the only choice
             if (isBridge)
             {
-                bridge = cadidateEdge;
+                bridge = candidateEdge;
             }
             else
             {
                 adjList = graphWithoutCadidateEdge;
-                return cadidateEdge;
+                return candidateEdge;
             }
         }
 
